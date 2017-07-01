@@ -7,12 +7,6 @@ import {
   Nav,
   NavItem,
   NavLink,
-  Container,
-  Row,
-  Col,
-  Jumbotron,
-  Button,
-  Table
 } from 'reactstrap';
 
 import Milestones from './Milestones';
@@ -28,7 +22,7 @@ import {
   Link
 } from 'react-router-dom'
 
-class Header extends React.Component {
+class Header extends Component {
   constructor(props) {
     super(props);
 

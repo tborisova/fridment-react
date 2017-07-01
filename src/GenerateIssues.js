@@ -1,27 +1,6 @@
 import React, { Component } from 'react';
-import {
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  NavLink,
-  Container,
-  Row,
-  Col,
-  Jumbotron,
-  Button,
-  Table
-} from 'reactstrap';
-import Issues from './Issues'
-import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  Redirect
-} from 'react-router-dom'
-class GenerateIssues extends React.Component {
+import { Redirect } from 'react-router-dom'
+class GenerateIssues extends Component {
 
   componentDidMount() {
      fetch(`/milestones/${this.props.match.params.id}/issues`, {

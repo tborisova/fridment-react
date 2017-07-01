@@ -1,28 +1,7 @@
 import React, { Component } from 'react';
-import {
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  NavLink,
-  Container,
-  Row,
-  Col,
-  Jumbotron,
-  Button,
-  Table
-} from 'reactstrap';
-import Issues from './Issues'
-import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  Redirect
-} from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 
-class OpenMilestone extends React.Component {
+class OpenMilestone extends Component {
 
   componentDidMount() {
      fetch(`/milestones/${this.props.match.params.id}/open`, {

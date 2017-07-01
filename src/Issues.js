@@ -1,29 +1,9 @@
 import React, { Component } from 'react';
-import {
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  NavLink,
-  Container,
-  Row,
-  Col,
-  Jumbotron,
-  Button,
-  Table
-} from 'reactstrap';
-import issues from './data/issues'
-
+import { Table } from 'reactstrap';
 import Milestone from './Milestone';
+import { Link } from 'react-router-dom'
 
-import {
-  BrowserRouter as Router,
-  Route,
-  Link
-} from 'react-router-dom'
-class Issues extends React.Component {
+class Issues extends Component {
   state = {issues: []}
 
   componentDidMount() {

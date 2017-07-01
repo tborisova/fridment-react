@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import BasicExample from './BasicExample'
 import registerServiceWorker from './registerServiceWorker';
 import 'bootstrap/dist/css/bootstrap.css';
 // import LineChart from 'react-d3-basic';
@@ -30,4 +29,4 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 ReactDOM.render(<App />, document.getElementById('root'));
 // ReactDOM.render(<LineChart width= {600} height= {300} data= {milestones} chartSeries= {chartSeries} x= {x}/>, document.getElementById('data_line'));
-// registerServiceWorker();
+registerServiceWorker();

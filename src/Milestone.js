@@ -1,32 +1,11 @@
 import React, { Component } from 'react';
 import {
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  NavLink,
-  Container,
-  Row,
-  Col,
   Jumbotron,
-  Button,
   Table
 } from 'reactstrap';
-import milestones from './data/milestones'
-import Issues from './Issues'
-import {
-  BrowserRouter as Router,
-  Route,
-  Link
-} from 'react-router-dom'
-import GenerateIssues from './GenerateIssues'
-import FinishMilestone from './FinishMilestone'
-import OpenMilestone from './OpenMilestone'
 import MilestoneView from './MilestoneView'
 
-class Milestone extends React.Component {
+class Milestone extends Component {
   state = {milestone: []}
 
   componentDidMount() {
@@ -36,9 +15,6 @@ class Milestone extends React.Component {
   }
 
   render(){
-
-    const id = this.props.match.params.id;
-    const milestone = this.state.milestone;
 
     return(
       <div>
@@ -56,7 +32,7 @@ class Milestone extends React.Component {
               <th colspan="4">Actions</th>
             </tr>
           </thead>
-          <MilestoneView milestone={milestone}/>
+          <MilestoneView milestone={this.state.milestone}/>
         </Table>
         </Jumbotron>
       </div>

@@ -1,34 +1,8 @@
 import React, { Component } from 'react';
-import {
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  NavLink,
-  Container,
-  Row,
-  Col,
-  Jumbotron,
-  Button,
-  Table
-} from 'reactstrap';
-import milestones from './data/milestones'
-import Issues from './Issues'
-import GenerateIssues from './GenerateIssues'
-import OpenMilestone from './OpenMilestone'
+import { Table } from 'reactstrap';
 import MilestoneView from './MilestoneView'
 
-import {
-  BrowserRouter as Router,
-  Route,
-  Link
-} from 'react-router-dom'
-
-import FinishMilestone from './FinishMilestone'
-
-class Milestones extends React.Component {
+class Milestones extends Component {
   state = {milestones: []}
 
   componentDidMount() {
