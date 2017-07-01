@@ -1,0 +1,8 @@
+const issues = [{"id":'1',"assignee_name":null,"issue_url":"https://api.github.com/repos/tborisova/fridment/issues/3","name":"test3","description":"test3","milestone_id":'1',"number":'3',"created_at":"2017-06-30T13:55:18.328Z","updated_at":"2017-06-30T13:55:18.328Z"},
+{"id":'2',"assignee_name":null,"issue_url":"https://api.github.com/repos/tborisova/fridment/issues/2","name":"test 2","description":"test 2","milestone_id":'1',"number":'2',"created_at":"2017-06-30T13:55:18.347Z","updated_at":"2017-06-30T13:55:18.347Z"},
+{"id":'3',"assignee_name":null,"issue_url":"https://api.github.com/repos/tborisova/fridment/issues/1","name":"test 5","description":"test","milestone_id":'1',"number":'1',"created_at":"2017-06-30T13:55:18.350Z","updated_at":"2017-06-30T13:55:18.350Z"},
+{"id":'4',"assignee_name":null,"issue_url":"https://api.github.com/repos/tborisova/fridment/issues/3","name":"test3","description":"test3","milestone_id":'1',"number":'3',"created_at":"2017-06-30T15:11:54.332Z","updated_at":"2017-06-30T15:11:54.332Z"},
+{"id":'5',"assignee_name":null,"issue_url":"https://api.github.com/repos/tborisova/fridment/issues/2","name":"test 2","description":"test 2","milestone_id":'1',"number":'2',"created_at":"2017-06-30T15:11:54.355Z","updated_at":"2017-06-30T15:11:54.355Z"},
+{"id":'6',"assignee_name":null,"issue_url":"https://api.github.com/repos/tborisova/fridment/issues/1","name":"test","description":"test","milestone_id":'2',"number":'1',"created_at":"2017-06-30T15:11:54.358Z","updated_at":"2017-06-30T15:11:54.358Z"}]
+
+export default issues
