@@ -21,6 +21,7 @@ import {
   Route,
   Link
 } from 'react-router-dom'
+import CommentsView from './CommentsView'
 
 class Header extends Component {
   constructor(props) {
@@ -60,6 +61,8 @@ class Header extends Component {
           <Route exact path="/milestones/:id" component={Milestone}/>
           <Route exact path="/milestones/:id/finish" component={FinishMilestone}/>
           <Route exact path="/milestones/:id/open" component={OpenMilestone}/>
+          <Route exact path="/milestones/:id/open" component={OpenMilestone}/>
+          <Route exact path="milestones/:id/issues/:issue_id/comments" component={CommentsView}/>
         </div>
       </Router>
     );

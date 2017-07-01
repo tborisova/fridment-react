@@ -9,7 +9,12 @@ class Milestone extends Component {
   state = {milestone: []}
 
   componentDidMount() {
-    fetch(`/milestones/${this.props.match.params.id}`)
+    fetch(`/milestones/${this.props.match.params.id}`, {
+      headers: {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json',
+  }
+    })
       .then(res => res.json())
       .then(milestone => this.setState({ milestone }));
   }
