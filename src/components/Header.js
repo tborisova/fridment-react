@@ -79,7 +79,7 @@ class Header extends Component {
           <Route exact path="/new_milestone" component={NewMilestone}/>
           <Route exact path="/milestones/:milestone_id/edit" component={EditMilestone}/>
           <Route exact path="/issues/:milestone_id" component={Issues}/>
-          <Route exact path="/generate_issues/:milestone_name" component={GenerateIssues}/>
+          <Route exact path="/milestones/generate_issues/:milestone_id" component={GenerateIssues}/>
           <Route exact path="/milestones/:milestone_id" component={Milestone}/>
           <Route exact path="/finish_milestone/:milestone_id" component={FinishMilestone}/>
           <Route exact path="/open_milestone/:milestone_id" component={OpenMilestone}/>

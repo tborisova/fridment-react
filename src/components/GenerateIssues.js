@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom'
 class GenerateIssues extends Component {
 
   componentDidMount() {
-     fetch(`/issues/${this.props.match.params.milestone_name}`, {
+     fetch(`/milestones/generate_issues/${this.props.match.params.milestone_id}`, {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
