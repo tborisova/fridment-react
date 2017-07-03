@@ -1,0 +1,5 @@
+export const AUTH_CONFIG = {
+  domain: 'domain',
+  clientId: 'clinet id',
+  callbackUrl: 'http://localhost:3000/callback'
+}

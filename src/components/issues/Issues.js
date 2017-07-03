@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { Table } from 'reactstrap';
-import Milestone from './Milestone';
+import Milestone from '../milestones/Milestone';
 import { Link } from 'react-router-dom'
-import CommentsView from './CommentsView'
+import CommentsView from '../comments/CommentsView'
 
-import AddTesters from './AddTesters'
-import AddComments from './AddComments'
-import TestersView from './TestersView'
-import ViewIssue from './ViewIssue'
+import AddTesters from '../users/AddTesters'
+import AddComments from '../comments/AddComments'
+import TestersView from '../users/TestersView'
+import ViewIssue from '../issues/ViewIssue'
 
 import { PieChart, Pie, Legend, Cell, Tooltip, ResponsiveContainer, Sector,
   Label, LabelList } from 'recharts';
@@ -19,16 +19,8 @@ class Issues extends Component {
       this.state = {
         issues: [],
         milestone: [],
-        data01: [
-  {
-        "name": "tested",
-        "value": 22.22222222222222
-    },
-    {
-        "name": "not tested",
-        "value": 77.77777777777777
-    }
-]
+        burn_down_chart: []
+
       }
       this.findState = this.findState.bind(this);
    };
@@ -66,21 +58,22 @@ class Issues extends Component {
       .then(res => res.json())
       .then(milestone => this.setState({ milestone }));
 
-    fetch(`/issues/burn_down_chart/${this.props.match.params.milestone_id}`, {
+    fetch(`/issues/burn_down_chart/${this.props.match.params.milestone_id}`,
+    {
       headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
       }
     })
       .then(res => res.json())
       .then(burn_down_chart => this.setState({ burn_down_chart }));
 
+
   }
 
   render(){
-    const colors = ["#1f77b4","#ff7f0e","#2ca02c","#d62728","#9467bd","#8c564b","#e377c2","#7f7f7f","#bcbd22","#17becf"];
+    const colors = scaleOrdinal(schemeCategory10).range();
     const id = this.props.match.params.mileston_id;
-
     return(
       <div>
       <h2>Issues for milestone {this.state.milestone.name}</h2>
@@ -119,27 +112,23 @@ class Issues extends Component {
           )}
           </tbody>
         </Table>
-        <PieChart width={800} height={400}>
-            <Legend />
-            <Pie
-              data={this.state.data01}
-              dataKey="value"
-              cx={200}
-              cy={200}
-              startAngle={180}
-              endAngle={0}
-              outerRadius={80}
-              label
-            >
-              {
-                this.state.data01.map((entry, index) => (
-                  <Cell key={`slice-${index}`} fill={colors[index % 10]}/>
-                ))
-              }
-              <Label value="Tested vs Not tested issues" position="outside" />
-              <LabelList position="outside" />
-            </Pie>
+            <PieChart>
+              <Pie
+                data={this.state.burn_down}
+                dataKey="percentage"
+                innerRadius="25%"
+                outerRadius="40%"
+                isAnimationActive={false}
+              >
+                {
+                  this.state.burn_down_chart.map((entry, index) => (
+                    <Cell key={`slice-${index}`} fill={colors[index % 10]}/>
+                  ))
+                }
+                <Label value="test" />
+              </Pie>
             </PieChart>
+        </div>
       </div>
     )
   };

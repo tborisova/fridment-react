@@ -7,6 +7,7 @@ import {
   Nav,
   NavItem,
   NavLink,
+  NavButton
 } from 'reactstrap';
 
 import Milestones from './Milestones';
@@ -17,6 +18,8 @@ import FinishMilestone from './FinishMilestone'
 import OpenMilestone from './OpenMilestone'
 import NewMilestone from './NewMilestone'
 import EditMilestone from './EditMilestone'
+import Callback from './Callback'
+import AuthService from './AuthService'
 import {
   BrowserRouter as Router,
   Route,
@@ -27,7 +30,15 @@ import AddTesters from './AddTesters'
 import AddComments from './AddComments'
 import TestersView from './TestersView'
 import ViewIssue from './ViewIssue'
+import { login, logout, isLoggedIn } from './AuthService';
 
+  const auth = new AuthService();
+
+const handleAuthentication = (nextState, replace) => {
+  if (/access_token|id_token|error/.test(nextState.location.hash)) {
+    auth.handleAuthentication();
+  }
+}
 class Header extends Component {
   constructor(props) {
     super(props);
@@ -43,22 +54,24 @@ class Header extends Component {
     });
   }
   render() {
+
     return (
       <Router>
         <div>
           <Navbar color="faded" light toggleable>
             <NavbarToggler right onClick={this.toggle} />
             <NavbarBrand><Link to="/milestones">Milestones</Link></NavbarBrand>
-            <NavbarBrand><Link to="/new_milestone">New milestone</Link></NavbarBrand>
+            {
+             ( auth.isAuthenticated() ) ? <NavbarBrand><Link to="/new_milestone">New milestone</Link></NavbarBrand> :  ''
+            }
 
             <Collapse isOpen={this.state.isOpen} navbar>
               <Nav className="ml-auto" navbar>
-                <NavItem>
-                  <NavLink href="/components/">user</NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink href="https://github.com/reactstrap/reactstrap">Logout</NavLink>
-                </NavItem>
+              <NavItem>
+                {
+                (auth.isAuthenticated()) ? ( <button className="btn btn-danger log" onClick={() => auth.logout()}>Log out </button> ) : ( <button className="btn btn-info log" onClick={() => auth.login()}>Log In</button> )
+                }
+              </NavItem>
               </Nav>
             </Collapse>
           </Navbar>
@@ -76,6 +89,11 @@ class Header extends Component {
           <Route exact path="/add_comments/:milestone_id/:issue_id" component={AddComments}/>
           <Route exact path="/get_testers/:issue_id" component={TestersView}/>
           <Route exact path="/issues/show/:id" component={ViewIssue}/>
+          <Route path="/callback" component={Callback} />
+          <Route path="/callback" render={(props) => {
+            handleAuthentication(props);
+            return <Callback {...props} /> 
+          }}/>
         </div>
       </Router>
     );
