@@ -22,7 +22,7 @@ export default class AddComments extends React.Component {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
       }
-    }).then(window.location = `/issues/${this.props.match.params.issue_id}`)
+    }).then(window.location = `/issues/${this.state.issue.milestone_id}`)
    }
 
   componentDidMount() {

@@ -44,43 +44,17 @@ class Milestones extends Component {
         )}
         </Table>
 
-        <LineChart
-            width={600} height={400} data={this.state.milestones}
-            margin={{ top: 40, right: 40, bottom: 20, left: 20 }}>
-            <CartesianGrid vertical={false} />
-            <XAxis dataKey="created_at">
-            </XAxis>
-            <YAxis>
-              <Label value="Number of tickets" position="insideLeft" angle={90} />
-            </YAxis>
-            <Tooltip />
-            <Line dataKey="number_of_issues" stroke="#ff7300" dot={false} />
-          </LineChart>
-
            <LineChart
             width={600} height={400} data={this.state.milestones}
             margin={{ top: 40, right: 40, bottom: 20, left: 20 }}>
-            <CartesianGrid vertical={false} />
+            <CartesianGrid vertical={true} />
             <XAxis dataKey="created_at">
             </XAxis>
             <YAxis>
-              <Label value="Number of comments" position="insideLeft" angle={90} />
+              <Label value="State of milestones per creation" position="outsideTop" angle={90} />
             </YAxis>
             <Tooltip />
-            <Line dataKey="number_of_comments" stroke="#ff7300" dot={false} />
-          </LineChart>
-
-           <LineChart
-            width={600} height={400} data={this.state.milestones}
-            margin={{ top: 40, right: 40, bottom: 20, left: 20 }}>
-            <CartesianGrid vertical={false} />
-            <XAxis dataKey="created_at">
-            </XAxis>
-            <YAxis>
-              <Label value="Number of testers" position="insideLeft" angle={90} />
-            </YAxis>
-            <Tooltip />
-            <Line dataKey="number_of_testers" stroke="#ff7300" dot={false} />
+            <Line dataKey="state" stroke="#ff7300" dot={false} />
           </LineChart>
       </div>
     )

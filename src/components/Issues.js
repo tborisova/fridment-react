@@ -14,7 +14,27 @@ import TestersView from './TestersView'
 import ViewIssue from './ViewIssue'
 
 class Issues extends Component {
-  state = {issues: [], milestone: []}
+  constructor(props) {
+      super(props);
+      this.state = {
+        issues: [],
+        milestone: []
+      }
+      this.findState = this.findState.bind(this);
+   };
+
+  findState(issue) {
+    fetch(`/issues/get_state/${issue.id}`, {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      }
+    }).then(function(response) {
+      return response.json();
+    }).then(function(response){
+      document.getElementById(`state_of${issue.id}`).innerHTML = `${JSON.stringify(response).substring(0,4)}%`;
+    })
+   }
 
   componentDidMount() {
     fetch(`/issues/${this.props.match.params.milestone_id}`,
@@ -70,7 +90,7 @@ class Issues extends Component {
               <td>{issue.created_at}</td>
               {issue.testers.length > 0 ? <td><Link to={`/get_testers/${issue.id}`} component={TestersView}>view testers({issue.testers.length})</Link></td> : <td>No testers</td>}
               {issue.comments.length > 0 ? <td><Link to={`/comments/${issue.id}`} component={CommentsView}>view comments({issue.comments.length})</Link></td> : <td>No comments</td>}
-              <td>{issue.state}</td>
+              <td id={`state_of${issue.id}`}>{this.findState(issue)}</td>
               <td><Link to={`/add_testers/${issue.milestone_id}/${issue.id}`} component={AddTesters}>add testers</Link></td>
               <td><Link to={`/add_comments/${issue.milestone_id}/${issue.id}`} component={AddComments}>add comments</Link></td>
             </tr>
