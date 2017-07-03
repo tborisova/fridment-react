@@ -9,7 +9,7 @@ class Milestone extends Component {
   state = {milestone: []}
 
   componentDidMount() {
-    fetch(`/milestones/${this.props.match.params.id}`, {
+    fetch(`/milestones/${this.props.match.params.milestone_id}`, {
       headers: {
     'Accept': 'application/json',
     'Content-Type': 'application/json',
@@ -24,14 +24,14 @@ class Milestone extends Component {
     return(
       <div>
         <Jumbotron>
-          <h1>Milestone {}</h1>
+          <h1>Milestone {this.state.milestone.name}</h1>
           <Table>
           <thead>
             <tr>
               <th>ID</th>
               <th>Name</th>
               <th>Description</th>
-              <th>Author</th>
+              <th>Author ID</th>
               <th>State</th>
               <th>Created at</th>
               <th colspan="4">Actions</th>

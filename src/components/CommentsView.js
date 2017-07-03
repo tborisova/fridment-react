@@ -4,10 +4,10 @@ import Milestone from './Milestone';
 import { Link } from 'react-router-dom'
 
 class CommentsView extends Component {
-  state = {comments: []}
+  state = {comments: [], issue: []}
 
   componentDidMount() {
-    fetch(`/milestones/${this.props.match.params.id}/comments/${this.props.match.params.comment_id}/comments`,
+    fetch(`/comments/${this.props.match.params.issue_id}`,
     {
       headers: {
     'Accept': 'application/json',
@@ -16,18 +16,26 @@ class CommentsView extends Component {
     })
       .then(res => res.json())
       .then(comments => this.setState({ comments }));
+
+      fetch(`/issues/show/${this.props.match.params.issue_id}`, {
+          headers: { 'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+          }})
+      .then(res => res.json())
+      .then(issue => this.setState({ issue }));
   }
 
   render(){
 
     return(
       <div>
+      <h2>Comments for issue: {this.state.issue.issue_url}</h2>
+
       <Table>
           <thead>
             <tr>
               <th>Id</th>
-              <th>Author name</th>
-              <th>comment</th>
+              <th>Author id</th>
               <th>Working</th>
               <th>Description</th>
               <th>Created at</th>
@@ -37,8 +45,8 @@ class CommentsView extends Component {
           {this.state.comments.map(comment =>
             <tr>
               <td>{comment.id}</td>
-              <td>{comment.author_name}</td>
-              <td>{comment.state}</td>
+              <td>{comment.author_id}</td>
+              <td>{comment.state === false ? 'False' : 'True'}</td>
               <td>{comment.description}</td>
               <td>{comment.created_at}</td>
             </tr>

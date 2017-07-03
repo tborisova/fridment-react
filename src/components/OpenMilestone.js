@@ -4,7 +4,7 @@ import { Redirect } from 'react-router-dom'
 class OpenMilestone extends Component {
 
   componentDidMount() {
-     fetch(`/milestones/${this.props.match.params.id}/open`, {
+     fetch(`/milestones/open/${this.props.match.params.milestone_id}`, {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -16,7 +16,7 @@ class OpenMilestone extends Component {
   render(){
      return(
       <Redirect to={{
-        pathname: `/milestones/${this.props.match.params.id}`,
+        pathname: `/milestones`,
       }}/>
     );
   };

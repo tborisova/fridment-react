@@ -10,7 +10,7 @@ import res from '../data/milestones';
 import { scaleOrdinal, schemeCategory10 } from 'd3-scale';
 
 class Milestones extends Component {
-  state = {milestones: []}
+  state = {milestones: [], users: []}
 
   componentDidMount() {
     fetch('/milestones', {
@@ -24,18 +24,16 @@ class Milestones extends Component {
    }
 
   render(){
-
-
-
     return(
       <div>
+      <h2>Milestones</h2>
       <Table responsive hover>
           <thead>
             <tr>
               <th>ID</th>
               <th>Name</th>
               <th>Description</th>
-              <th>Author</th>
+              <th>Author ID</th>
               <th>State</th>
               <th>Created at</th>
               <td colspan="4">Actions</td>

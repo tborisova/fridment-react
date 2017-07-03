@@ -11,13 +11,12 @@ import { scaleOrdinal, schemeCategory10 } from 'd3-scale';
 import AddTesters from './AddTesters'
 import AddComments from './AddComments'
 import TestersView from './TestersView'
-import ViewIssue from './ViewIssue'
 
-class Issues extends Component {
-  state = {issues: [], milestone: []}
+class ViewIssue extends Component {
+  state = {issue: []}
 
   componentDidMount() {
-    fetch(`/issues/${this.props.match.params.milestone_id}`,
+    fetch(`/issues/show/${this.props.match.params.id}`,
     {
       headers: {
       'Accept': 'application/json',
@@ -25,23 +24,15 @@ class Issues extends Component {
       }
     })
       .then(res => res.json())
-      .then(issues => this.setState({ issues }));
-
-    fetch(`/milestones/${this.props.match.params.milestone_id}`, {
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      }
-    })
-      .then(res => res.json())
-      .then(milestone => this.setState({ milestone }));
+      .then(issue => this.setState({ issue }));
   }
 
   render(){
-    const id = this.props.match.params.mileston_id;
+    const issue = this.state.issue;
+
     return(
       <div>
-      <h2>Issues for milestone {this.state.milestone.name}</h2>
+      <h2>issue {this.state.issue.issue_url}</h2>
       <Table>
           <thead>
             <tr>
@@ -59,7 +50,6 @@ class Issues extends Component {
             </tr>
           </thead>
           <tbody>
-          {this.state.issues.map(issue =>
             <tr>
               <td>{issue.id}</td>
               <td>{issue.assignee_name}</td>
@@ -74,7 +64,6 @@ class Issues extends Component {
               <td><Link to={`/add_testers/${issue.milestone_id}/${issue.id}`} component={AddTesters}>add testers</Link></td>
               <td><Link to={`/add_comments/${issue.milestone_id}/${issue.id}`} component={AddComments}>add comments</Link></td>
             </tr>
-          )}
           </tbody>
         </Table>
 
@@ -95,4 +84,4 @@ class Issues extends Component {
   };
 };
 
-export default Issues;
+export default ViewIssue;

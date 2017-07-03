@@ -3,14 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "auth0-js": "^8.8.0",
     "bootstrap": "^4.0.0-alpha.6",
+    "jwt-decode": "^2.2.0",
     "react": "^15.6.1",
     "react-d3-basic": "^1.6.11",
     "react-dom": "^15.6.1",
     "react-router-dom": "^4.1.1",
     "react-scripts": "1.0.10",
     "react-transition-group": "^1.2.0",
-    "reactstrap": "^4.8.0"
+    "reactstrap": "^4.8.0",
+    "recharts": "^1.0.0-alpha.1"
   },
   "scripts": {
     "start": "react-scripts start",
