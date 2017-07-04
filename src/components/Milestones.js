@@ -5,7 +5,6 @@ import {ResponsiveContainer, LineChart, Line, XAxis, YAxis, ReferenceLine,
   ReferenceDot, Tooltip, CartesianGrid, Legend, Brush, ErrorBar, AreaChart, Area,
   Label, LabelList } from 'recharts';
 import { scalePow, scaleLog } from 'd3-scale';
-// import LineChart from 'react-d3-basic';
 import res from '../data/milestones';
 import { scaleOrdinal, schemeCategory10 } from 'd3-scale';
 
