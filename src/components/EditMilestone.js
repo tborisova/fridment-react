@@ -41,7 +41,7 @@ export default class EditMilestone extends React.Component {
         <FormGroup row>
           <Label for="name" sm={2}>Name</Label>
           <Col sm={10}>
-            <Input type="name" name="name" id="name" value={this.state.milestone.name}/>
+            <Input type="name" name="name" id="name" placeholder={this.state.milestone.name}/>
           </Col>
         </FormGroup>
         <FormGroup row>

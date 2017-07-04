@@ -14,7 +14,7 @@ export default class NewMilestone extends React.Component {
         name: document.getElementById('name').value,
         description: document.getElementById('description').value,
         author_id: document.getElementById('author').value,
-        state: 'opened'
+        state: 1
       }),
       headers: {
         'Accept': 'application/json',
